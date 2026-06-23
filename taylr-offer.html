@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TAYLR · Artist Offer</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Manteca';src:url('assets/ED-Manteca-Regular.otf') format('opentype');font-weight:400 900;font-display:swap}
+
+:root{
+  --ink:#0A0A0A; --deep:#070708; --cream:#F5F5F0; --stone:#8A8A8A; --stone-d:#6f6f68;
+  --teal:#2BC4C9; --amber:#E8A14B; --ember:#D9603A;
+  --current:linear-gradient(90deg,var(--teal),var(--amber) 58%,var(--ember));
+  --display:'Manteca','Satoshi',serif;
+  --body:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:ui-monospace,"SF Mono","Menlo",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0}
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:var(--body);color:var(--cream);background:#222;font-size:11px;line-height:1.5;-webkit-font-smoothing:antialiased}
+@page{size:Letter;margin:0}
+
+.page{position:relative;width:8.5in;height:11in;margin:0 auto;overflow:hidden;padding:0.62in 0.66in;
+  background:
+    radial-gradient(120% 80% at 8% -6%, rgba(43,196,201,.07), transparent 50%),
+    radial-gradient(120% 80% at 104% 106%, rgba(217,96,58,.06), transparent 52%),
+    linear-gradient(180deg,#0c0c0e 0%,#0a0a0b 55%,#070708 100%);
+  display:flex;flex-direction:column}
+.page + .page{page-break-before:always}
+
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.96;letter-spacing:.004em}
+.em{background:var(--current);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lower{text-transform:lowercase}
+.label{font-family:var(--body);font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone);font-weight:500}
+.label.cur{background:var(--current);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* masthead */
+.mast{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(245,245,240,.13);position:relative;z-index:2}
+.mast img{height:18px;width:auto;opacity:.95}
+.mast .r{text-align:right;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);line-height:1.7}
+
+/* hero band */
+.hero{position:relative;margin-top:16px;height:2.7in;overflow:hidden;border:1px solid rgba(245,245,240,.12);display:flex;align-items:flex-end;background:#000;z-index:2}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.66)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.42),rgba(8,8,8,.2) 40%,rgba(7,7,8,.92))}
+.hero .ht{position:relative;z-index:2;padding:20px 22px}
+.hero .ht .eye{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:#cfcfc7;margin-bottom:6px}
+.hero .ht .nm{font-family:var(--display);font-size:62px;line-height:.86;letter-spacing:-.01em}
+.hero .ht .sb{font-family:var(--display);font-size:21px;line-height:1;color:#d6d6cf;margin-top:2px}
+
+.pos{margin-top:16px;font-size:12.5px;line-height:1.6;color:#d2d2cb;max-width:64ch;position:relative;z-index:2}
+.pos b{color:var(--cream);font-weight:500}
+
+.sec-lbl{display:flex;align-items:center;gap:10px;margin:16px 0 10px;position:relative;z-index:2}
+.sec-lbl .ln{height:1px;flex:1;background:linear-gradient(90deg,rgba(138,138,138,.45),transparent)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;position:relative;z-index:2}
+.list{list-style:none;display:grid;gap:7px}
+.list li{display:flex;gap:9px;align-items:flex-start;font-size:11px;line-height:1.4;color:#d4d4cc}
+.list li::before{content:'+';font-family:var(--display);background:var(--current);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:13px;line-height:1;flex:none}
+
+.invest{margin-top:auto;position:relative;z-index:2;border:1px solid rgba(245,245,240,.14);background:linear-gradient(180deg,rgba(255,255,255,.04),transparent);
+  display:flex;align-items:center;justify-content:space-between;padding:16px 20px;position:relative}
+.invest::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--current)}
+.invest .l{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+.invest .amt{font-family:var(--display);font-size:42px;line-height:1}
+.invest .v{font-family:var(--display);font-size:18px;color:var(--stone)}
+.invest .v .em{font-size:18px}
+
+/* page 2 options */
+.h2{font-family:var(--display);font-size:46px;line-height:.92;letter-spacing:-.01em;margin-top:18px;position:relative;z-index:2}
+.h2sub{font-size:12.5px;color:#c9c9c1;margin-top:10px;max-width:60ch;position:relative;z-index:2}
+
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;position:relative;z-index:2}
+.card{border:1px solid rgba(245,245,240,.13);padding:22px 20px;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,.022),transparent);position:relative}
+.card.full{border-color:rgba(43,196,201,.4);background:linear-gradient(180deg,rgba(43,196,201,.06),transparent)}
+.card.full::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--current)}
+.card .ct{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:10px}
+.card.full .ct{background:var(--current);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card h3{font-family:var(--display);font-size:24px;line-height:1;text-transform:lowercase}
+.card .price{display:flex;align-items:baseline;gap:9px;margin:10px 0 4px}
+.card .price .p{font-family:var(--display);font-size:46px;line-height:1}
+.card .price .pn{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.card .who{font-size:11px;color:#c9c9c1;line-height:1.5;margin-bottom:14px;min-height:2.8em}
+.card .list{margin-top:2px}
+.card .list li{font-size:10.5px}
+.card .note{margin-top:14px;padding-top:12px;border-top:1px solid rgba(245,245,240,.12);font-size:9.5px;line-height:1.5;color:var(--stone)}
+
+.compare{margin-top:18px;position:relative;z-index:2;border-top:1px solid rgba(245,245,240,.13)}
+.compare .row{display:grid;grid-template-columns:1fr 90px 90px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(245,245,240,.1);font-size:10.5px}
+.compare .row .h{color:#d4d4cc}
+.compare .row .c{text-align:center;font-family:var(--display);font-size:14px}
+.compare .row.head{border-bottom-color:rgba(245,245,240,.2)}
+.compare .row.head .c{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);font-family:var(--body)}
+.compare .yes{background:var(--current);-webkit-background-clip:text;background-clip:text;color:transparent}
+.compare .no{color:var(--stone-d)}
+
+.close{margin-top:auto;position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding-top:18px;border-top:1px solid rgba(245,245,240,.13)}
+.close .mv{font-family:var(--display);font-size:30px;line-height:1;color:var(--stone)}
+.close .mv .ln{display:block;width:42px;height:2px;background:var(--current);margin-top:12px}
+.close .ct{text-align:right;font-size:9px;letter-spacing:.04em;line-height:1.9;color:var(--stone)}
+.close .ct b{color:var(--cream);font-weight:500}
+
+.foot{margin-top:14px;font-size:8px;color:var(--stone-d);letter-spacing:.03em;line-height:1.6;position:relative;z-index:2}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 · THE FULL OFFER ============ -->
+<section class="page">
+  <div class="mast">
+    <img src="assets/wordmark-sm.png" alt="Fivemore">
+    <div class="r">Artist Development + Production<br>× XXPOSR · Magnolia Park Studio</div>
+  </div>
+
+  <div class="hero">
+    <img src="assets/taylr.jpg" alt="TAYLR">
+    <div class="ht">
+      <div class="eye">A Fivemore Artist Immersion · for TAYLR</div>
+      <div class="nm">TAYLR</div>
+      <div class="sb lower">artist immersion <span class="em">day</span></div>
+    </div>
+  </div>
+
+  <p class="pos">a full day built to turn the TAYLR project into a <b>brand</b>. we capture the music, define the identity, and create the assets that carry <b>Miss Mystic</b>, set up the upcoming release <b>Not A Goodbye</b>, and keep feeding the project long after the day is done. one room, one team, everything pointed at you.</p>
+
+  <div class="sec-lbl"><span class="label">What's included</span><span class="ln"></span></div>
+  <div class="cols">
+    <ul class="list">
+      <li>exclusive access to Magnolia Park Studio for the day</li>
+      <li>professional recording engineer on-site</li>
+      <li>creative direction by Matt Hubble + Bethany Seagle</li>
+      <li>cinematic performance captures</li>
+      <li>artist branding photography</li>
+    </ul>
+    <ul class="list">
+      <li>long-form artist interview</li>
+      <li>social media content creation</li>
+      <li>Brand Signal Blueprint</li>
+      <li>strategic artist positioning session</li>
+      <li>creative + marketing recommendations</li>
+    </ul>
+  </div>
+
+  <div class="sec-lbl"><span class="label">What you leave with</span><span class="ln"></span></div>
+  <div class="cols">
+    <ul class="list">
+      <li>performance video assets</li>
+      <li>professional photography gallery</li>
+      <li>artist interview footage</li>
+    </ul>
+    <ul class="list">
+      <li>social media content library</li>
+      <li>your Brand Signal Blueprint</li>
+      <li>creative + marketing recommendations</li>
+    </ul>
+  </div>
+
+  <div class="invest">
+    <div>
+      <div class="l">The full day</div>
+      <div style="display:flex;align-items:baseline;gap:14px;margin-top:4px">
+        <span class="amt">$3,000</span>
+        <span class="v">value <span class="em">$7,000+</span></span>
+      </div>
+    </div>
+    <div class="label">One artist · one day · full team</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 · TWO WAYS TO WORK ============ -->
+<section class="page">
+  <div class="mast">
+    <img src="assets/wordmark-sm.png" alt="Fivemore">
+    <div class="r">TAYLR · Artist Offer<br>Two ways to work</div>
+  </div>
+
+  <h2 class="h2 lower">two ways <span class="em">to work.</span></h2>
+  <p class="h2sub">the full immersion at Magnolia Park, or a focused content and photo session with Bethany on its own. start where it makes sense, build from there.</p>
+
+  <div class="opts">
+    <div class="card">
+      <div class="ct">With XXPOSR · Bethany</div>
+      <h3>content + photos</h3>
+      <div class="price"><span class="p">$2,000</span><span class="pn">half-tier</span></div>
+      <div class="who">just you and Bethany. a focused content and photo session. you and Bethany coordinate the studio or location together.</div>
+      <ul class="list">
+        <li>creative direction by Bethany Seagle (XXPOSR)</li>
+        <li>artist branding photography</li>
+        <li>short-form social content creation</li>
+        <li>a delivered photo gallery + content library</li>
+      </ul>
+      <div class="note">studio and location coordinated by you and Bethany. does not include Magnolia Park Studio, the full production team, the recording engineer, the long-form interview, or the Brand Signal Blueprint.</div>
+    </div>
+
+    <div class="card full">
+      <div class="ct">Full team · Magnolia Park</div>
+      <h3>artist immersion day</h3>
+      <div class="price"><span class="p">$3,000</span><span class="pn">value $7,000+</span></div>
+      <div class="who">the complete day. Matt and Bethany, a pro engineer, the full studio, and your Brand Signal Blueprint.</div>
+      <ul class="list">
+        <li>everything in content + photos, plus</li>
+        <li>a full day inside Magnolia Park Studio</li>
+        <li>professional recording engineer on-site</li>
+        <li>cinematic performance capture</li>
+        <li>creative direction by Matt Hubble + Bethany</li>
+        <li>long-form artist interview</li>
+        <li>Brand Signal Blueprint + positioning session</li>
+      </ul>
+      <div class="note">the foundation that turns the project into a brand. assets, identity, and the plan to run after the day.</div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div class="row head"><span class="h">what's in each</span><span class="c">$2k</span><span class="c">$3k</span></div>
+    <div class="row"><span class="h">artist branding photography</span><span class="c yes">+</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">social content library</span><span class="c yes">+</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">creative direction by Bethany (XXPOSR)</span><span class="c yes">+</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">Magnolia Park Studio, full day</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">professional recording engineer</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">cinematic performance capture</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">creative direction by Matt Hubble</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">long-form artist interview</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+    <div class="row"><span class="h">Brand Signal Blueprint + positioning</span><span class="c no">&middot;</span><span class="c yes">+</span></div>
+  </div>
+
+  <div class="close">
+    <div class="mv lower">your move.<span class="ln"></span></div>
+    <div class="ct">
+      <b>Bethany Seagle</b> · XXPOSR · @xxposr<br>
+      <b>Matt Hubble</b> · hubble@fivemore.io<br>
+      magnoliapark.studio
+    </div>
+  </div>
+
+  <p class="foot">TAYLR · Artist Immersion Day. A Fivemore artist development and production offering for TAYLR, in partnership with XXPOSR, at Magnolia Park Studio. Capturing Miss Mystic and the upcoming release Not A Goodbye. Estimated value is a sum of comparable a-la-carte rates and is provided for reference.</p>
+</section>
+
+</body>
+</html>
